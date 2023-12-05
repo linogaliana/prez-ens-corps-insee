@@ -1,17 +1,17 @@
 ---
-title: Séminaire d'intégration des administrateurs
+title: Présentation du corps de l'Insee
 subtitle: |
-  **[Session innovation]{.orange}**
+  **[Parcours depuis l'ENS Lyon]{.orange}**
 author:
     - name: "**[[Lino Galiana](https://www.linogaliana.fr/)]{.blue2}**"
       email: lino.galiana@insee.fr
       affiliations:
         - name: "[__Insee__]{.orange}"
 
-#date: 06-09-2023
+date: 07-12-2023
 slide-number: true
 footer: |
-  **Séminaire d'intégration des administrateurs**
+  **ENS Lyon**
 # uncomment for French presentations:
 lang: fr-FR
 # for blind readers:
@@ -32,42 +32,6 @@ css: custom.css
 
 
 
-# Parcours avant l'Insee
-
-## Mon parcours
-
-:::: {.columns}
-
-::: {.column width="60%"}
-![](petit.png)
-:::
-
-::: {.column width="40%"}
-
-<br>
-```{python}
-import folium
-
-# Coordonnées géographiques
-latitude = 43 + 14/60 + 53.6/3600
-longitude = 1 + 49/60 + 43.3/3600
-
-# Création de la carte centrée sur les coordonnées
-m = folium.Map([latitude, longitude], zoom_start=12)
-folium.Marker(
-    location=[latitude, longitude], popup="J'ai grandi là"
-    ).add_to(m)
-
-m
-```
-
-_Ma vie dans le sud-ouest avant la statistique_
-
-:::
-
-
-::::
-
 ## Parcours d'étude
 
 - Economie à l'ENS Lyon après B/L
@@ -85,44 +49,6 @@ _Ma vie dans le sud-ouest avant la statistique_
 
 - Découverte progressive de la _data science_:
     + Une formation continue
-
-
-## Découverte du monde professionnel {.smaller}
-
-:::: {.columns}
-
-::: {.column width="50%"}
-![Comment j'étais préparé pour les problèmes opérationnels par mes études](angrycalvin0_bis.png)
-:::
-
-::: {.column width="50%"}
-![Ma réaction face au mur](angrycalvin2.png)
-:::
-
-::::
-
-
-## Découverte du monde professionnel
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-- La _data science_ n'est pas qu'un problème académique ;
-
-- Beaucoup d'_open data_ pour apprendre ;
-
-- Combien d'heures auraient été économisées si j'avais eu un cours de `Git` {{< fa brands git-alt >}}...
-
-:::
-
-::: {.column width="50%"}
-
-![](lesson.png)
-
-:::
-
-::::
 
 
 # Premier poste au D2E
