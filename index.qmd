@@ -90,7 +90,7 @@ au moment du confinement ([IA](https://www.insee.fr/fr/statistiques/4635407))
 
 <br>
 
-- Etude liant données Fideli (données socio-fiscales) & SIVIC (hospitalisation) ([ici](https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/les-dossiers-de-la-drees/caracteristiques-socio-economiques-des))
+- Etude liant données données socio-fiscales exhaustives & données d'hospitalisations ([ici](https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/les-dossiers-de-la-drees/caracteristiques-socio-economiques-des))
     + En lien avec la DREES (Ministère santé)
 
 
@@ -110,6 +110,38 @@ au moment du confinement ([IA](https://www.insee.fr/fr/statistiques/4635407))
 
 # Missions actuelles
 
+## Ma journée type {.smaller}
+
+__Elle n'existe pas__ 😺
+
+* Des missions de long terme (proche d'un travail de recherche) ;
+
+. . .
+
+* Des missions plus ponctuelles (quelques jours de travail) ;
+
+. . .
+
+
+* De l'écriture de contenu spécialisé (_post_ de blog, cours...) ;
+
+. . .
+
+* Du code, beaucoup de code ({{< fa brands python >}}, {{< fa brands r-project >}} et {{< fa brands javascript >}}) ;
+
+. . .
+
+* Des échanges d'expertise avec les collègues (mission réseau des _data scientists_, échange avec les équipes métiers).
+
+::: {.callout-note}
+
+Postes dans l'innovation statistique sont très ouverts en termes de thématiques car le besoin 
+d'innovation est partout.
+
+- Postes classiques sont plus ciblés sur une thématique (mais aussi des marges de liberté)
+
+:::
+
 ## Enseignements de _data science_ {.smaller}
 
 :::: {.columns}
@@ -123,7 +155,7 @@ au moment du confinement ([IA](https://www.insee.fr/fr/statistiques/4635407))
 - [Introduction à {{< fa brands r-project >}}](https://rgeo.linogaliana.fr/) (ENS Ulm) ;
 - [Bonnes pratiques en {{< fa brands r-project >}} et `Git` {{< fa brands git-alt >}}](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/) (Insee) ;
 - [Données émergentes](https://ensai-donnees-emergentes.netlify.app) (ENSAI) ;
-- [Participation à la documentation collaborative `utilitR`](https://www.book.utilitr.org).
+- [Participation à la documentation collaborative `utilitR` ({{< fa brands github >}})](https://www.book.utilitr.org).
 
 :::
 
@@ -135,20 +167,95 @@ au moment du confinement ([IA](https://www.insee.fr/fr/statistiques/4635407))
 
 ::::
 
-__Et surtout consultez le portail complet de formation du [datalab de l'Insee](https://www.sspcloud.fr/formation), plein de formations faites par l'équipe 🤩__
 
+## Projets actuels: long terme {.smaller}
 
-## Projets actuels
-
-- Participation au projet RESIL sur la partie moteur d'appariement flou ;
-
-- Codification automatique données de caisse pour l'IPC ;
+- Participation à un projet d'association de bases de données pour pallier l'absence de NIR ;
 
 - _Dataviz_ indices des loyers construits avec données `SeLoger.com`
 
-Et des projets d'innovation plus ponctuels (en mode 2 jour de travail):
+- Codification automatique données de caisse pour l'IPC ;
 
-- Exemple: assister la conj pour [moderniser une appli de _dataviz_](https://radjerad.pages.lab.sspcloud.fr/inflation_internationale/)
+```{ojs}
+viewof activite = Inputs.text( 
+  {label: '', value: 'data scientist', width: 800}
+)
+```
+
+
+```{ojs}
+d3.json(urlApe).then(res => {
+  var IC, results;
+
+  ({ IC, ...results } = res);
+
+  IC = parseFloat(IC);
+
+  const rows = Object.values(results).map(obj => {
+    return `
+    <tr>
+      <td>${obj.code} | ${obj.libelle}</td>
+      <td>${obj.probabilite.toFixed(3)}</td>
+    </tr>
+  `;
+  }).join('');
+
+  const confidenceRow = `<tr>
+    <td colspan="2" style="text-align:left; "><em>Indice de confiance : ${IC.toFixed(3)}</em></td>
+  </tr>`;
+
+  const tableHTML = html`
+  <table>
+    <caption>
+      Prédiction de l'activité
+    </caption>
+    <tr>
+      <th style="text-align:center;">Libellé (NA2008)</th>
+      <th>Probabilité</th>
+    </tr>
+      ${rows}
+      ${confidenceRow}
+  </table>`;
+
+  // Now you can use the tableHTML as needed, for example, inserting it into the DOM.
+  // For example, assuming you have a container with the id "tableContainer":
+  return tableHTML;
+});
+```
+
+```{ojs}
+activite_debounce = debounce(viewof activite, 2000)
+urlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&prob_min=0&text_feature=${activite_debounce}`
+```
+
+```{ojs}
+import {debounce} from "@mbostock/debouncing-input"
+```
+
+
+
+## Projets actuels
+### Projets plus ponctuels
+
+Des projets en mode 2 jours de travail:
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+- Moderniser une appli de _dataviz_ pour le suivi macroéconomique conjoncturel
+- [Guide d'utilisation des données du recensement de la population](https://ssphub.netlify.app/post/parquetrp/)
+- [Application pour vérifier la qualité des algorithmes d'association entre sources](https://inseefrlab.github.io/serverless-annotation-tool/)
+
+:::
+
+::: {.column width="40%"}
+
+![](https://ssphub.netlify.app/post/parquetRP/ducks.png)
+
+:::
+
+::::
 
 ## SSPHub
 
