@@ -572,8 +572,8 @@ d’innovation est partout.</p>
 <li><p>Codification automatique données de caisse pour l’IPC ;</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="179" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb1-179"><a href="#cb1-179"></a>viewof activite <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>( </span>
-<span id="cb1-180"><a href="#cb1-180"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'data scientist'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span>}</span>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="179" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb1-179"><a href="#cb1-179"></a>viewof product <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>( </span>
+<span id="cb1-180"><a href="#cb1-180"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">''</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">'Coca cola'</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span>}</span>
 <span id="cb1-181"><a href="#cb1-181"></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
@@ -581,44 +581,9 @@ d’innovation est partout.</p>
 </div>
 </div>
 </div>
+<p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="186" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 185;"><span id="cb2-186"><a href="#cb2-186"></a>d3<span class="op">.</span><span class="fu">json</span>(urlApe)<span class="op">.</span><span class="fu">then</span>(res <span class="kw">=&gt;</span> {</span>
-<span id="cb2-187"><a href="#cb2-187"></a>  <span class="kw">var</span> IC<span class="op">,</span> results<span class="op">;</span></span>
-<span id="cb2-188"><a href="#cb2-188"></a></span>
-<span id="cb2-189"><a href="#cb2-189"></a>  ({ IC<span class="op">,</span> <span class="op">...</span>results } <span class="op">=</span> res)<span class="op">;</span></span>
-<span id="cb2-190"><a href="#cb2-190"></a></span>
-<span id="cb2-191"><a href="#cb2-191"></a>  IC <span class="op">=</span> <span class="pp">parseFloat</span>(IC)<span class="op">;</span></span>
-<span id="cb2-192"><a href="#cb2-192"></a></span>
-<span id="cb2-193"><a href="#cb2-193"></a>  <span class="kw">const</span> rows <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">values</span>(results)<span class="op">.</span><span class="fu">map</span>(obj <span class="kw">=&gt;</span> {</span>
-<span id="cb2-194"><a href="#cb2-194"></a>    <span class="cf">return</span> <span class="vs">`</span></span>
-<span id="cb2-195"><a href="#cb2-195"></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb2-196"><a href="#cb2-196"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> | </span><span class="sc">${</span>obj<span class="op">.</span><span class="at">libelle</span><span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb2-197"><a href="#cb2-197"></a><span class="vs">      &lt;td&gt;</span><span class="sc">${</span>obj<span class="op">.</span><span class="at">probabilite</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
-<span id="cb2-198"><a href="#cb2-198"></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb2-199"><a href="#cb2-199"></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb2-200"><a href="#cb2-200"></a>  })<span class="op">.</span><span class="fu">join</span>(<span class="st">''</span>)<span class="op">;</span></span>
-<span id="cb2-201"><a href="#cb2-201"></a></span>
-<span id="cb2-202"><a href="#cb2-202"></a>  <span class="kw">const</span> confidenceRow <span class="op">=</span> <span class="vs">`&lt;tr&gt;</span></span>
-<span id="cb2-203"><a href="#cb2-203"></a><span class="vs">    &lt;td colspan="2" style="text-align:left; "&gt;&lt;em&gt;Indice de confiance : </span><span class="sc">${</span>IC<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/em&gt;&lt;/td&gt;</span></span>
-<span id="cb2-204"><a href="#cb2-204"></a><span class="vs">  &lt;/tr&gt;`</span><span class="op">;</span></span>
-<span id="cb2-205"><a href="#cb2-205"></a></span>
-<span id="cb2-206"><a href="#cb2-206"></a>  <span class="kw">const</span> tableHTML <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb2-207"><a href="#cb2-207"></a><span class="vs">  &lt;table&gt;</span></span>
-<span id="cb2-208"><a href="#cb2-208"></a><span class="vs">    &lt;caption&gt;</span></span>
-<span id="cb2-209"><a href="#cb2-209"></a><span class="vs">      Prédiction de l'activité</span></span>
-<span id="cb2-210"><a href="#cb2-210"></a><span class="vs">    &lt;/caption&gt;</span></span>
-<span id="cb2-211"><a href="#cb2-211"></a><span class="vs">    &lt;tr&gt;</span></span>
-<span id="cb2-212"><a href="#cb2-212"></a><span class="vs">      &lt;th style="text-align:center;"&gt;Libellé (NA2008)&lt;/th&gt;</span></span>
-<span id="cb2-213"><a href="#cb2-213"></a><span class="vs">      &lt;th&gt;Probabilité&lt;/th&gt;</span></span>
-<span id="cb2-214"><a href="#cb2-214"></a><span class="vs">    &lt;/tr&gt;</span></span>
-<span id="cb2-215"><a href="#cb2-215"></a><span class="vs">      </span><span class="sc">${</span>rows<span class="sc">}</span></span>
-<span id="cb2-216"><a href="#cb2-216"></a><span class="vs">      </span><span class="sc">${</span>confidenceRow<span class="sc">}</span></span>
-<span id="cb2-217"><a href="#cb2-217"></a><span class="vs">  &lt;/table&gt;`</span><span class="op">;</span></span>
-<span id="cb2-218"><a href="#cb2-218"></a></span>
-<span id="cb2-219"><a href="#cb2-219"></a>  <span class="co">// Now you can use the tableHTML as needed, for example, inserting it into the DOM.</span></span>
-<span id="cb2-220"><a href="#cb2-220"></a>  <span class="co">// For example, assuming you have a container with the id "tableContainer":</span></span>
-<span id="cb2-221"><a href="#cb2-221"></a>  <span class="cf">return</span> tableHTML<span class="op">;</span></span>
-<span id="cb2-222"><a href="#cb2-222"></a>})<span class="op">;</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="187" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 186;"><span id="cb2-187"><a href="#cb2-187"></a>Inputs<span class="op">.</span><span class="fu">table</span>(toto)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -626,27 +591,40 @@ d’innovation est partout.</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="227" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 226;"><span id="cb3-227"><a href="#cb3-227"></a>activite_debounce <span class="op">=</span> <span class="fu">debounce</span>(viewof activite<span class="op">,</span> <span class="dv">2000</span>)</span>
-<span id="cb3-228"><a href="#cb3-228"></a>urlApe <span class="op">=</span> <span class="vs">`https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&amp;prob_min=0&amp;text_feature=</span><span class="sc">${</span>activite_debounce<span class="sc">}</span><span class="vs">`</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="193" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb3-193"><a href="#cb3-193"></a>toto <span class="op">=</span> d3<span class="op">.</span><span class="fu">json</span>(urlPredicat)<span class="op">.</span><span class="fu">then</span>(</span>
+<span id="cb3-194"><a href="#cb3-194"></a>  res <span class="kw">=&gt;</span> {</span>
+<span id="cb3-195"><a href="#cb3-195"></a>    <span class="kw">const</span> values <span class="op">=</span> res[<span class="st">'coicop'</span>][<span class="vs">`</span><span class="sc">\'${</span>product_debounce<span class="sc">}\'</span><span class="vs">`</span>] <span class="op">;</span></span>
+<span id="cb3-196"><a href="#cb3-196"></a>    <span class="cf">return</span> values</span>
+<span id="cb3-197"><a href="#cb3-197"></a>  }</span>
+<span id="cb3-198"><a href="#cb3-198"></a>  )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="203" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 202;"><span id="cb4-203"><a href="#cb4-203"></a>product_debounce <span class="op">=</span> <span class="fu">debounce</span>(viewof product<span class="op">,</span> <span class="dv">2000</span>)</span>
+<span id="cb4-204"><a href="#cb4-204"></a>urlPredicat <span class="op">=</span> <span class="vs">`https://api.lab.sspcloud.fr/predicat/label?k=3&amp;q=%27</span><span class="sc">${</span>product_debounce<span class="sc">}</span><span class="vs">%27&amp;v=1`</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-1" data-nodetype="declaration">
+<div id="ojs-cell-4-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-2" data-nodetype="declaration">
+<div id="ojs-cell-4-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="231" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 230;"><span id="cb4-231"><a href="#cb4-231"></a><span class="im">import</span> {debounce} <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="207" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 206;"><span id="cb5-207"><a href="#cb5-207"></a><span class="im">import</span> {debounce} <span class="im">from</span> <span class="st">"@mbostock/debouncing-input"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-4" data-nodetype="declaration">
+<div id="ojs-cell-5" data-nodetype="declaration">
 
 </div>
 </div>
@@ -668,12 +646,30 @@ d’innovation est partout.</p>
 </div>
 </div>
 </section>
-<section id="ssphub" class="slide level2" data-background-image="background.svg" data-background-size="contain">
-<h2>SSPHub</h2>
-<p>to do</p>
+<section id="animation-dun-réseau-de-data-scientists-ssphub" class="slide level2" data-background-image="background.svg" data-background-size="contain">
+<h2>Animation d’un réseau de <em>data scientists</em> (<code>SSPHub</code>)</h2>
+<p>Animation d’un réseau de <em>data scientists</em> pour l’administration (+500 inscrits):</p>
+<ul>
+<li>Production de contenu sur <a href="https://ssphub.netlify.app/" class="uri">https://ssphub.netlify.app/</a> (posts de blog, <em>newsletters</em>…) ;</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Organisation d’événements (séminaires, journée de la <em>data science</em>, <em>masterclass</em>…) ;</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Projets collaboratifs ;</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Expertise et assistance sur projets innovants.</li>
+</ul>
 
 <div class="footer footer-default">
 <p><strong>ENS Lyon</strong></p>
+</div>
 </div>
 </section></section>
     </div>
@@ -889,7 +885,7 @@ d’innovation est partout.</p>
     </script>
     
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof activite = Inputs.text( \n  {label: '', value: 'data scientist', width: 800}\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"d3.json(urlApe).then(res => {\n  var IC, results;\n\n  ({ IC, ...results } = res);\n\n  IC = parseFloat(IC);\n\n  const rows = Object.values(results).map(obj => {\n    return `\n    <tr>\n      <td>${obj.code} | ${obj.libelle}</td>\n      <td>${obj.probabilite.toFixed(3)}</td>\n    </tr>\n  `;\n  }).join('');\n\n  const confidenceRow = `<tr>\n    <td colspan=\"2\" style=\"text-align:left; \"><em>Indice de confiance : ${IC.toFixed(3)}</em></td>\n  </tr>`;\n\n  const tableHTML = html`\n  <table>\n    <caption>\n      Prédiction de l'activité\n    </caption>\n    <tr>\n      <th style=\"text-align:center;\">Libellé (NA2008)</th>\n      <th>Probabilité</th>\n    </tr>\n      ${rows}\n      ${confidenceRow}\n  </table>`;\n\n  // Now you can use the tableHTML as needed, for example, inserting it into the DOM.\n  // For example, assuming you have a container with the id \"tableContainer\":\n  return tableHTML;\n});\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"activite_debounce = debounce(viewof activite, 2000)\nurlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&prob_min=0&text_feature=${activite_debounce}`\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"import {debounce} from \"@mbostock/debouncing-input\"\n"},{"methodName":"interpretQuiet","source":"shinyInput('activite')"}]}
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof product = Inputs.text( \n  {label: '', value: 'Coca cola', width: 800}\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"Inputs.table(toto)\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"toto = d3.json(urlPredicat).then(\n  res => {\n    const values = res['coicop'][`\\'${product_debounce}\\'`] ;\n    return values\n  }\n  )\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"product_debounce = debounce(viewof product, 2000)\nurlPredicat = `https://api.lab.sspcloud.fr/predicat/label?k=3&q=%27${product_debounce}%27&v=1`\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"import {debounce} from \"@mbostock/debouncing-input\"\n"},{"methodName":"interpretQuiet","source":"shinyInput('product')"}]}
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

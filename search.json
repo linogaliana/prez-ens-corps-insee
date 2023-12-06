@@ -46,7 +46,7 @@
     "href": "index.html#projets-actuels-long-terme",
     "title": "Présentation du corps de l’Insee",
     "section": "Projets actuels: long terme",
-    "text": "Projets actuels: long terme\n\nParticipation à un projet d’association de bases de données pour pallier l’absence de NIR ;\nDataviz indices des loyers construits avec données SeLoger.com\nCodification automatique données de caisse pour l’IPC ;\n\n\nviewof activite = Inputs.text( \n  {label: '', value: 'data scientist', width: 800}\n)\n\n\n\n\n\n\n\nd3.json(urlApe).then(res =&gt; {\n  var IC, results;\n\n  ({ IC, ...results } = res);\n\n  IC = parseFloat(IC);\n\n  const rows = Object.values(results).map(obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `;\n  }).join('');\n\n  const confidenceRow = `&lt;tr&gt;\n    &lt;td colspan=\"2\" style=\"text-align:left; \"&gt;&lt;em&gt;Indice de confiance : ${IC.toFixed(3)}&lt;/em&gt;&lt;/td&gt;\n  &lt;/tr&gt;`;\n\n  const tableHTML = html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Prédiction de l'activité\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Libellé (NA2008)&lt;/th&gt;\n      &lt;th&gt;Probabilité&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n      ${confidenceRow}\n  &lt;/table&gt;`;\n\n  // Now you can use the tableHTML as needed, for example, inserting it into the DOM.\n  // For example, assuming you have a container with the id \"tableContainer\":\n  return tableHTML;\n});\n\n\n\n\n\n\n\nactivite_debounce = debounce(viewof activite, 2000)\nurlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&prob_min=0&text_feature=${activite_debounce}`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport {debounce} from \"@mbostock/debouncing-input\""
+    "text": "Projets actuels: long terme\n\nParticipation à un projet d’association de bases de données pour pallier l’absence de NIR ;\nDataviz indices des loyers construits avec données SeLoger.com\nCodification automatique données de caisse pour l’IPC ;\n\n\nviewof product = Inputs.text( \n  {label: '', value: 'Coca cola', width: 800}\n)\n\n\n\n\n\n\n\n\nInputs.table(toto)\n\n\n\n\n\n\n\ntoto = d3.json(urlPredicat).then(\n  res =&gt; {\n    const values = res['coicop'][`\\'${product_debounce}\\'`] ;\n    return values\n  }\n  )\n\n\n\n\n\n\n\nproduct_debounce = debounce(viewof product, 2000)\nurlPredicat = `https://api.lab.sspcloud.fr/predicat/label?k=3&q=%27${product_debounce}%27&v=1`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport {debounce} from \"@mbostock/debouncing-input\""
   },
   {
     "objectID": "index.html#projets-actuels",
@@ -56,10 +56,10 @@
     "text": "Projets actuels\nProjets plus ponctuels\nDes projets en mode 2 jours de travail:\n\n\n\nModerniser une appli de dataviz pour le suivi macroéconomique conjoncturel\nGuide d’utilisation des données du recensement de la population\nApplication pour vérifier la qualité des algorithmes d’association entre sources"
   },
   {
-    "objectID": "index.html#ssphub",
-    "href": "index.html#ssphub",
+    "objectID": "index.html#animation-dun-réseau-de-data-scientists-ssphub",
+    "href": "index.html#animation-dun-réseau-de-data-scientists-ssphub",
     "title": "Présentation du corps de l’Insee",
-    "section": "SSPHub",
-    "text": "SSPHub\nto do\n\n\nENS Lyon"
+    "section": "Animation d’un réseau de data scientists (SSPHub)",
+    "text": "Animation d’un réseau de data scientists (SSPHub)\nAnimation d’un réseau de data scientists pour l’administration (+500 inscrits):\n\nProduction de contenu sur https://ssphub.netlify.app/ (posts de blog, newsletters…) ;\n\n\n\nOrganisation d’événements (séminaires, journée de la data science, masterclass…) ;\n\n\n\n\nProjets collaboratifs ;\n\n\n\n\nExpertise et assistance sur projets innovants.\n\n\n\nENS Lyon"
   }
 ]
