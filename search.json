@@ -25,21 +25,35 @@
     "href": "index.html#une-étude-en-collaboration-avec-un-ssm",
     "title": "Présentation du corps de l’Insee",
     "section": "Une étude en collaboration avec un SSM",
-    "text": "Une étude en collaboration avec un SSM\n\n\n\n\nEtude liant données Fideli (données socio-fiscales) & SIVIC (hospitalisation) (ici)\n\nEn lien avec la DREES (Ministère santé)\n\nPour alimenter notre compréhension des inégalités liées à la crise sanitaire.\n\nHiérarchiser les facteurs corrélés aux cas sévères de Covid."
+    "text": "Une étude en collaboration avec un SSM\n\n\n\n\nEtude liant données données socio-fiscales exhaustives & données d’hospitalisations (ici)\n\nEn lien avec la DREES (Ministère santé)\n\nPour alimenter notre compréhension des inégalités liées à la crise sanitaire.\n\nHiérarchiser les facteurs corrélés aux cas sévères de Covid."
+  },
+  {
+    "objectID": "index.html#ma-journée-type",
+    "href": "index.html#ma-journée-type",
+    "title": "Présentation du corps de l’Insee",
+    "section": "Ma journée type",
+    "text": "Ma journée type\nElle n’existe pas 😺\n\nDes missions de long terme (proche d’un travail de recherche) ;\n\n\n\nDes missions plus ponctuelles (quelques jours de travail) ;\n\n\n\n\nDe l’écriture de contenu spécialisé (post de blog, cours…) ;\n\n\n\n\nDu code, beaucoup de code (,  et ) ;\n\n\n\n\nDes échanges d’expertise avec les collègues (mission réseau des data scientists, échange avec les équipes métiers).\n\n\n\n\n\n\n\nNote\n\n\nPostes dans l’innovation statistique sont très ouverts en termes de thématiques car le besoin\nd’innovation est partout.\n\nPostes classiques sont plus ciblés sur une thématique (mais aussi des marges de liberté)"
   },
   {
     "objectID": "index.html#enseignements-de-data-science",
     "href": "index.html#enseignements-de-data-science",
     "title": "Présentation du corps de l’Insee",
     "section": "Enseignements de data science",
-    "text": "Enseignements de data science\n\n\n\n\nPython  pour la data science (ENSAE 2A) ;\nMise en production de projets data science (ENSAE 3A) ;\nIntroduction à  (ENS Ulm) ;\nBonnes pratiques en  et Git  (Insee) ;\nDonnées émergentes (ENSAI) ;\nParticipation à la documentation collaborative utilitR.\n\n\n\n\n\n\n\n\n\nEt surtout consultez le portail complet de formation du datalab de l’Insee, plein de formations faites par l’équipe 🤩"
+    "text": "Enseignements de data science\n\n\n\n\nPython  pour la data science (ENSAE 2A) ;\nMise en production de projets data science (ENSAE 3A) ;\nIntroduction à  (ENS Ulm) ;\nBonnes pratiques en  et Git  (Insee) ;\nDonnées émergentes (ENSAI) ;\nParticipation à la documentation collaborative utilitR ()."
+  },
+  {
+    "objectID": "index.html#projets-actuels-long-terme",
+    "href": "index.html#projets-actuels-long-terme",
+    "title": "Présentation du corps de l’Insee",
+    "section": "Projets actuels: long terme",
+    "text": "Projets actuels: long terme\n\nParticipation à un projet d’association de bases de données pour pallier l’absence de NIR ;\nDataviz indices des loyers construits avec données SeLoger.com\nCodification automatique données de caisse pour l’IPC ;\n\n\nviewof activite = Inputs.text( \n  {label: '', value: 'data scientist', width: 800}\n)\n\n\n\n\n\n\n\nd3.json(urlApe).then(res =&gt; {\n  var IC, results;\n\n  ({ IC, ...results } = res);\n\n  IC = parseFloat(IC);\n\n  const rows = Object.values(results).map(obj =&gt; {\n    return `\n    &lt;tr&gt;\n      &lt;td&gt;${obj.code} | ${obj.libelle}&lt;/td&gt;\n      &lt;td&gt;${obj.probabilite.toFixed(3)}&lt;/td&gt;\n    &lt;/tr&gt;\n  `;\n  }).join('');\n\n  const confidenceRow = `&lt;tr&gt;\n    &lt;td colspan=\"2\" style=\"text-align:left; \"&gt;&lt;em&gt;Indice de confiance : ${IC.toFixed(3)}&lt;/em&gt;&lt;/td&gt;\n  &lt;/tr&gt;`;\n\n  const tableHTML = html`\n  &lt;table&gt;\n    &lt;caption&gt;\n      Prédiction de l'activité\n    &lt;/caption&gt;\n    &lt;tr&gt;\n      &lt;th style=\"text-align:center;\"&gt;Libellé (NA2008)&lt;/th&gt;\n      &lt;th&gt;Probabilité&lt;/th&gt;\n    &lt;/tr&gt;\n      ${rows}\n      ${confidenceRow}\n  &lt;/table&gt;`;\n\n  // Now you can use the tableHTML as needed, for example, inserting it into the DOM.\n  // For example, assuming you have a container with the id \"tableContainer\":\n  return tableHTML;\n});\n\n\n\n\n\n\n\nactivite_debounce = debounce(viewof activite, 2000)\nurlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&prob_min=0&text_feature=${activite_debounce}`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nimport {debounce} from \"@mbostock/debouncing-input\""
   },
   {
     "objectID": "index.html#projets-actuels",
     "href": "index.html#projets-actuels",
     "title": "Présentation du corps de l’Insee",
     "section": "Projets actuels",
-    "text": "Projets actuels\n\nParticipation au projet RESIL sur la partie moteur d’appariement flou ;\nCodification automatique données de caisse pour l’IPC ;\nDataviz indices des loyers construits avec données SeLoger.com\n\nEt des projets d’innovation plus ponctuels (en mode 2 jour de travail):\n\nExemple: assister la conj pour moderniser une appli de dataviz"
+    "text": "Projets actuels\nProjets plus ponctuels\nDes projets en mode 2 jours de travail:\n\n\n\nModerniser une appli de dataviz pour le suivi macroéconomique conjoncturel\nGuide d’utilisation des données du recensement de la population\nApplication pour vérifier la qualité des algorithmes d’association entre sources"
   },
   {
     "objectID": "index.html#ssphub",
