@@ -68,12 +68,7 @@ css: custom.css
 - Production des statistiques de déplacement de population
 au moment du confinement ([IA](https://www.insee.fr/fr/statistiques/4635407))
     + Production en temps contraint ;
-    + Gros écho médiatique
-    + Enjeux méthodologiques
-
-::: {.callout-note}
-Pas classique pour un poste au D2E de faire une production statistique mais très formateur. 
-:::
+    + Gros écho médiatique.
 
 :::
 
@@ -96,7 +91,7 @@ Pas classique pour un poste au D2E de faire une production statistique mais trè
 <br>
 
 - Etude liant données Fideli (données socio-fiscales) & SIVIC (hospitalisation) ([ici](https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/les-dossiers-de-la-drees/caracteristiques-socio-economiques-des))
-    + En lien avec la DREES
+    + En lien avec la DREES (Ministère santé)
 
 
 - Pour alimenter notre compréhension des inégalités liées à la crise sanitaire.
@@ -113,37 +108,7 @@ Pas classique pour un poste au D2E de faire une production statistique mais trè
 
 ::::
 
-## Participer à l'innovation (déjà)
-
-:::: {.columns}
-
-::: {.column width="70%"}
-
-- Coordonne la documentation collaborative [`utilitR`](https://www.book.utilitr.org/) avec Olivier Meslin.
-
-- Une documentation faite __par__ des utilisateurs, __pour__ des utilisateurs ;
-
-- Accompagner utilisateurs {{< fa brands r-project >}} par des fiches pratiques ;
-
-- Une approche <del>disruptive</del> horizontale.
-
-:::
-
-::: {.column width="30%"}
-
-![](https://www.book.utilitr.org/resources/logo-utilitr.png){fig-align="center"}
-
-:::
-
-::::
-
-
-
 # Missions actuelles
-
-## Résumé
-
-![](cooking.png){fig-align="center"}
 
 ## Enseignements de _data science_ {.smaller}
 
@@ -158,6 +123,7 @@ Pas classique pour un poste au D2E de faire une production statistique mais trè
 - [Introduction à {{< fa brands r-project >}}](https://rgeo.linogaliana.fr/) (ENS Ulm) ;
 - [Bonnes pratiques en {{< fa brands r-project >}} et `Git` {{< fa brands git-alt >}}](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/) (Insee) ;
 - [Données émergentes](https://ensai-donnees-emergentes.netlify.app) (ENSAI) ;
+- [Participation à la documentation collaborative `utilitR`](https://www.book.utilitr.org).
 
 :::
 
