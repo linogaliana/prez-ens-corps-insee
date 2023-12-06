@@ -177,55 +177,31 @@ d'innovation est partout.
 - Codification automatique données de caisse pour l'IPC ;
 
 ```{ojs}
-viewof activite = Inputs.text( 
-  {label: '', value: 'data scientist', width: 800}
+viewof product = Inputs.text( 
+  {label: '', value: 'Coca cola', width: 800}
 )
 ```
 
+<br>
 
 ```{ojs}
-d3.json(urlApe).then(res => {
-  var IC, results;
+Inputs.table(toto)
+```
 
-  ({ IC, ...results } = res);
 
-  IC = parseFloat(IC);
 
-  const rows = Object.values(results).map(obj => {
-    return `
-    <tr>
-      <td>${obj.code} | ${obj.libelle}</td>
-      <td>${obj.probabilite.toFixed(3)}</td>
-    </tr>
-  `;
-  }).join('');
-
-  const confidenceRow = `<tr>
-    <td colspan="2" style="text-align:left; "><em>Indice de confiance : ${IC.toFixed(3)}</em></td>
-  </tr>`;
-
-  const tableHTML = html`
-  <table>
-    <caption>
-      Prédiction de l'activité
-    </caption>
-    <tr>
-      <th style="text-align:center;">Libellé (NA2008)</th>
-      <th>Probabilité</th>
-    </tr>
-      ${rows}
-      ${confidenceRow}
-  </table>`;
-
-  // Now you can use the tableHTML as needed, for example, inserting it into the DOM.
-  // For example, assuming you have a container with the id "tableContainer":
-  return tableHTML;
-});
+```{ojs}
+toto = d3.json(urlPredicat).then(
+  res => {
+    const values = res['coicop'][`\'${product_debounce}\'`] ;
+    return values
+  }
+  )
 ```
 
 ```{ojs}
-activite_debounce = debounce(viewof activite, 2000)
-urlApe = `https://codification-ape-test.lab.sspcloud.fr/predict?nb_echos_max=3&prob_min=0&text_feature=${activite_debounce}`
+product_debounce = debounce(viewof product, 2000)
+urlPredicat = `https://api.lab.sspcloud.fr/predicat/label?k=3&q=%27${product_debounce}%27&v=1`
 ```
 
 ```{ojs}
@@ -257,6 +233,21 @@ Des projets en mode 2 jours de travail:
 
 ::::
 
-## SSPHub
+## Animation d'un réseau de _data scientists_ (`SSPHub`)
 
-to do
+Animation d'un réseau de _data scientists_ pour l'administration (+500 inscrits):
+
+- Production de contenu sur <https://ssphub.netlify.app/> (posts de blog, _newsletters_...) ;
+
+. . .
+
+- Organisation d'événements (séminaires, journée de la _data science_, _masterclass_...) ;
+
+. . .
+
+- Projets collaboratifs ;
+
+. . .
+
+- Expertise et assistance sur projets innovants.
+
